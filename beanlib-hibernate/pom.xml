@@ -22,6 +22,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>net.sf.beanlib</groupId>
 			<artifactId>beanlib</artifactId>
 			<scope>provided</scope>
@@ -45,10 +50,6 @@
 			<artifactId>jcip-annotations</artifactId>
 			<version>1.0</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
