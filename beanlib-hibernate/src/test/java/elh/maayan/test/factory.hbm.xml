@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="elh.maayan.test"
+	default-cascade="evict,merge,lock" default-access="property"
+	auto-import="true">
+	<class lazy="true" name="Factory" mutable="true" polymorphism="implicit"
+		dynamic-update="false" dynamic-insert="false" batch-size="1"
+		select-before-update="false" optimistic-lock="version">
+		<id name="id" type="long" access="property" unsaved-value="-1">
+			<meta attribute="sequence">seq</meta>
+			<generator class="native" />
+		</id>
+		<property name="address" />
+		<set sort="unsorted" name="suppliers" inverse="true" cascade="all-delete-orphan"
+			access="field" batch-size="10" lazy="false" outer-join="auto">
+			<key column="supp_ref" />
+			<one-to-many class="Supplier" />
+		</set>
+	</class>
+</hibernate-mapping>

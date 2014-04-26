@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+          <property name="hibernate.connection.url">jdbc:hsqldb:target/test-databases/elh.maayan/test</property>
+          <property name="hibernate.connection.username">sa</property>
+          <property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.autocommit">true</property>
+	 	<property name="hibernate.cache.use_query_cache">false</property>
+  		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+                <property name="show_sql">true</property>
+
+		<mapping class="elh.maayan.test.Factory"/>
+		<mapping class="elh.maayan.test.Contract"/>
+		<mapping class="elh.maayan.test.Supplier"/>
+    </session-factory>
+</hibernate-configuration>
