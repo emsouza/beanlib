@@ -5,7 +5,7 @@
 	<groupId>net.sf.beanlib</groupId>
 	<artifactId>beanlib-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>6.0.0</version>
+	<version>6.0.1-SNAPSHOT</version>
 	<name>Java Bean Library</name>
 	<url>http://beanlib.sourceforge.net/</url>
 	<description>Java Bean Utilities Library</description>
@@ -74,7 +74,7 @@
 		<connection>scm:git:https://github.com/emsouza/beanlib.git</connection>
 		<url>scm:git:https://github.com/emsouza/beanlib.git</url>
 		<developerConnection>scm:git:https://github.com/emsouza/beanlib.git</developerConnection>
-		<tag>beanlib-parent-6.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<build>
