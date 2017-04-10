@@ -22,12 +22,11 @@ import java.util.List;
  * @author Joe D. Velopar
  */
 public class FooWithList {
+
     private List<Object> list;
     FooWithList fooWithList;
 
-    protected FooWithList() {}
-
-    public List getList() {
+    public List<Object> getList() {
         return list;
     }
 
@@ -36,8 +35,9 @@ public class FooWithList {
     }
 
     public boolean addToList(Object obj) {
-        if (list == null)
+        if (list == null) {
             list = new ArrayList<Object>();
+        }
         return this.list.add(obj);
     }
 
@@ -48,5 +48,4 @@ public class FooWithList {
     public void setFooWithList(FooWithList fooWithList) {
         this.fooWithList = fooWithList;
     }
-
 }

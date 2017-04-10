@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.hibernate.annotations.AccessType;
+import org.hibernate.annotations.AttributeAccessor;
 
 @Entity
 @SequenceGenerator(sequenceName = "seq", name = "seq")
@@ -45,7 +45,7 @@ public class Factory {
     }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @AccessType("field")
+    @AttributeAccessor("field")
     @JoinColumn(name = "supp_ref")
     private Set<Supplier> suppliers = new HashSet<Supplier>();
 

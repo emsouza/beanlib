@@ -11,9 +11,9 @@ import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import junit.framework.JUnit4TestAdapter;
-
 import org.junit.Test;
+
+import junit.framework.JUnit4TestAdapter;
 
 /**
  * @author Hanson Char

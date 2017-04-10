@@ -5,7 +5,7 @@
 	<groupId>net.sf.beanlib</groupId>
 	<artifactId>beanlib-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>6.0.1-SNAPSHOT</version>
+	<version>7.0.0</version>
 	<name>Java Bean Library</name>
 	<url>http://beanlib.sourceforge.net/</url>
 	<description>Java Bean Utilities Library</description>
@@ -16,7 +16,7 @@
 	</modules>
 
 	<properties>
-		<hibernateVersion>4.3.1.Final</hibernateVersion>
+		<hibernateVersion>5.0.10.Final</hibernateVersion>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 	</properties>
 
@@ -85,8 +85,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 				<inherited>true</inherited>
 			</plugin>
@@ -94,20 +94,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.5.3</version>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<projectNameTemplate>${project.name}</projectNameTemplate>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<useProjectReferences>true</useProjectReferences>
-				</configuration>
-			</plugin>
 		</plugins>
 
 	</build>
