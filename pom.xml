@@ -3,28 +3,31 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sf.beanlib</groupId>
-	<artifactId>beanlib-parent</artifactId>
+	<artifactId>beanlib</artifactId>
 	<packaging>pom</packaging>
-	<version>7.0.0</version>
+	<version>7.1.0-SNAPSHOT</version>
 	<name>Java Bean Library</name>
 	<url>http://beanlib.sourceforge.net/</url>
 	<description>Java Bean Utilities Library</description>
 
 	<modules>
-		<module>beanlib</module>
-		<module>beanlib-hibernate</module>
+		<module>core</module>
+		<module>hibernate</module>
 	</modules>
 
 	<properties>
-		<hibernateVersion>5.0.10.Final</hibernateVersion>
-		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<version.org.hibernate>5.0.10.Final</version.org.hibernate>
+		<version.org.slf4j>1.7.7</version.org.slf4j>
+
+		<project.compile.version>1.8</project.compile.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>net.sf.beanlib</groupId>
-				<artifactId>beanlib</artifactId>
+				<artifactId>beanlib-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -38,14 +41,9 @@
 				<version>2.6</version>
 			</dependency>
 			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.17</version>
-			</dependency>
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>1.4.7</version>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${version.org.slf4j}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hsqldb</groupId>
@@ -55,12 +53,12 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>${hibernateVersion}</version>
+				<version>${version.org.hibernate}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
-				<version>${hibernateVersion}</version>
+				<version>${version.org.hibernate}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.javassist</groupId>
@@ -83,12 +81,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.6.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${project.compile.version}</source>
+					<target>${project.compile.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 				</configuration>
-				<inherited>true</inherited>
 			</plugin>
 
 			<plugin>
