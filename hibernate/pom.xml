@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>net.sf.beanlib</groupId>
 		<artifactId>beanlib</artifactId>
-		<version>7.1.0</version>
+		<version>7.1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>beanlib-hibernate</artifactId>

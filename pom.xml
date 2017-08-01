@@ -5,7 +5,7 @@
 	<groupId>net.sf.beanlib</groupId>
 	<artifactId>beanlib</artifactId>
 	<packaging>pom</packaging>
-	<version>7.1.0</version>
+	<version>7.1.1-SNAPSHOT</version>
 	<name>Java Bean Library</name>
 	<url>http://beanlib.sourceforge.net/</url>
 	<description>Java Bean Utilities Library</description>
