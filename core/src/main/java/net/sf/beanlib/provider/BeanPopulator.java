@@ -247,6 +247,7 @@ public class BeanPopulator implements BeanPopulatorSpi {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T populate() {
         if (getBeanTransformerSpi() != null) {
             getBeanTransformerSpi().getClonedMap().put(fromBean, toBean);
@@ -255,9 +256,7 @@ public class BeanPopulator implements BeanPopulatorSpi {
         for (Method m : baseConfig.getSetterMethodCollector().collect(toBean)) {
             processSetterMethod(m);
         }
-        @SuppressWarnings("unchecked")
-        T ret = (T) toBean;
-        return ret;
+        return (T) toBean;
     }
 
     // -------------------------- BeanPopulatorBaseSpi --------------------------
