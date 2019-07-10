@@ -55,8 +55,6 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
      * @author Joe D. Velopar
      */
     public static class Factory implements CollectionReplicatorSpi.Factory {
-        private Factory() {}
-
         @Override
         public Hibernate4CollectionReplicator newCollectionReplicatable(BeanTransformerSpi beanTransformer) {
             return new Hibernate4CollectionReplicator(beanTransformer);
@@ -100,7 +98,7 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
             Comparator<T> toComparator = createToComparator(fromSortedSet);
 
             if (isHibernatePackage(fromClass)) {
-                return new TreeSet<T>(toComparator);
+                return new TreeSet<>(toComparator);
             }
             Constructor<?> constructor = fromClass.getConstructor(Comparator.class);
             Object[] initargs = { toComparator };
@@ -111,7 +109,7 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
         }
         if (from instanceof Set) {
             if (isHibernatePackage(fromClass)) {
-                return new HashSet<T>();
+                return new HashSet<>();
             }
 
             @SuppressWarnings("unchecked")
@@ -120,7 +118,7 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
         }
         if (from instanceof List) {
             if (isHibernatePackage(fromClass)) {
-                return new ArrayList<T>(from.size());
+                return new ArrayList<>(from.size());
             }
 
             @SuppressWarnings("unchecked")
@@ -129,7 +127,7 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
         }
         // don't know what collection, so use list
         LOGGER.warn("Don't know what collection object:" + fromClass + ", so assume List.");
-        return new ArrayList<T>(from.size());
+        return new ArrayList<>(from.size());
     }
 
     @Override

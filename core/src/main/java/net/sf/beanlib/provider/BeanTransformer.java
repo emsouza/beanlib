@@ -130,7 +130,7 @@ import net.sf.beanlib.spi.replicator.MapReplicatorSpi;
 public class BeanTransformer extends ReplicatorTemplate implements BeanTransformerSpi {
 
     /** Used to contains those objects that have been replicated. */
-    private Map<Object, Object> clonedMap = new IdentityHashMap<Object, Object>();
+    private Map<Object, Object> clonedMap = new IdentityHashMap<>();
 
     /**
      * Used to contain all the configuration options as a single configuration object.
@@ -223,7 +223,7 @@ public class BeanTransformer extends ReplicatorTemplate implements BeanTransform
 
     @Override
     public final void reset() {
-        clonedMap = new IdentityHashMap<Object, Object>();
+        clonedMap = new IdentityHashMap<>();
     }
 
     @Override
@@ -253,12 +253,6 @@ public class BeanTransformer extends ReplicatorTemplate implements BeanTransform
     @Override
     public final BeanTransformer initBeanSourceHandler(BeanSourceHandler beanSourceHandler) {
         baseConfig.setBeanSourceHandler(beanSourceHandler);
-        return this;
-    }
-
-    @Override
-    public final BeanTransformer initDebug(boolean debug) {
-        baseConfig.setDebug(debug);
         return this;
     }
 
@@ -404,11 +398,6 @@ public class BeanTransformer extends ReplicatorTemplate implements BeanTransform
     @Override
     public BeanSourceHandler getBeanSourceHandler() {
         return baseConfig.getBeanSourceHandler();
-    }
-
-    @Override
-    public boolean isDebug() {
-        return baseConfig.isDebug();
     }
 
     @Override

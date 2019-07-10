@@ -110,18 +110,6 @@ public interface BeanPopulatorBaseSpi {
     BeanPopulationExceptionHandler getBeanPopulationExceptionHandler();
 
     /**
-     * Used to control whether debug messages should be logged.
-     *
-     * @return the current object (ie this) for method chaining purposes.
-     */
-    BeanPopulatorBaseSpi initDebug(boolean debug);
-
-    /**
-     * Returns true if debug message logging is on; false otherwise.
-     */
-    boolean isDebug();
-
-    /**
      * Used to conveniently provide all the other configuration options as a single configuration object.
      *
      * @param baseConfig is used to conveniently group all the other initializable options into a single unit.

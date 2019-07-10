@@ -38,8 +38,6 @@ public class BeanPopulatorBaseConfig implements Cloneable {
 
     private BeanPopulationExceptionHandler beanPopulationExceptionHandler = BeanPopulationExceptionHandler.ABORT;
 
-    private boolean debug;
-
     public PropertyFilter getPropertyFilter() {
         return propertyFilter;
     }
@@ -62,14 +60,6 @@ public class BeanPopulatorBaseConfig implements Cloneable {
 
     public void setBeanSourceHandler(BeanSourceHandler beanSourceHandler) {
         this.beanSourceHandler = beanSourceHandler;
-    }
-
-    public boolean isDebug() {
-        return debug;
-    }
-
-    public void setDebug(boolean debug) {
-        this.debug = debug;
     }
 
     public DetailedPropertyFilter getDetailedPropertyFilter() {

@@ -273,17 +273,6 @@ public abstract class HibernateBeanReplicator implements BeanPopulatorBaseSpi {
     }
 
     /**
-     * Used to control whether debug messages should be logged.
-     *
-     * @return the current object (ie this) for method chaining purposes.
-     */
-    @Override
-    public final HibernateBeanReplicator initDebug(boolean debug) {
-        this.hibernateBeanTransformer.initDebug(debug);
-        return this;
-    }
-
-    /**
      * Used to configure a finder to find the property getter methods of a source JavaBean.
      *
      * @param readerMethodFinder can be used to find the property getter methods of a source JavaBean.
@@ -343,11 +332,6 @@ public abstract class HibernateBeanReplicator implements BeanPopulatorBaseSpi {
     @Override
     public BeanSourceHandler getBeanSourceHandler() {
         return hibernateBeanTransformer.getBeanSourceHandler();
-    }
-
-    @Override
-    public boolean isDebug() {
-        return hibernateBeanTransformer.isDebug();
     }
 
     @Override

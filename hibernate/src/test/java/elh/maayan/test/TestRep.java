@@ -91,7 +91,6 @@ public class TestRep {
                 return !"id".equals(propertyName);
             }
         });
-        r.initDebug(true);
         final Factory copy = r.copy(load);
         final Collection<Supplier> clonedSuppliers = copy.getSuppliers();
         final Collection<Contract> clonedContracts = copy.getContracts();

@@ -184,15 +184,11 @@ public class BeanPopulator implements BeanPopulatorSpi {
             propertyValue = transformer.transform(propertyValue, paramType, propertyInfo);
         }
 
-        if (baseConfig.isDebug()) {
-            if (LOGGER.isInfoEnabled()) {
-                LOGGER.info("processSetterMethod: setting propertyName=" + propertyName);
-            }
-        }
+        LOGGER.debug("processSetterMethod: setting propertyName=" + propertyName);
+
         // Invoke setter method
         Object[] args = { propertyValue };
         this.invokeMethodAsPrivileged(toBean, setterMethod, args);
-        return;
     }
 
     /**
@@ -282,16 +278,6 @@ public class BeanPopulator implements BeanPopulatorSpi {
     }
 
     @Override
-    public BeanPopulator initDebug(boolean debug) {
-        baseConfig.setDebug(debug);
-
-        if (this.getBeanTransformerSpi() != null) {
-            this.getBeanTransformerSpi().initDebug(debug);
-        }
-        return this;
-    }
-
-    @Override
     public BeanPopulator initDetailedPropertyFilter(DetailedPropertyFilter detailedPropertyFilter) {
         baseConfig.setDetailedPropertyFilter(detailedPropertyFilter);
 
@@ -368,11 +354,6 @@ public class BeanPopulator implements BeanPopulatorSpi {
     @Override
     public BeanSourceHandler getBeanSourceHandler() {
         return baseConfig.getBeanSourceHandler();
-    }
-
-    @Override
-    public boolean isDebug() {
-        return baseConfig.isDebug();
     }
 
     @Override

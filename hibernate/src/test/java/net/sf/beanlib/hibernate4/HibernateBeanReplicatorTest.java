@@ -121,7 +121,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        Foo to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(foo);
+        Foo to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(foo);
         assertEquals(foo.getString(), to.getString());
         assertEquals(foo.getProtectedSetString(), to.getProtectedSetString());
         assertNotNull(to.getProtectedSetString());
@@ -135,7 +135,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        Bar to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(bar);
+        Bar to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
         assertEquals(bar.getString(), to.getString());
         assertTrue(bar == bar.getBar());
@@ -151,7 +151,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        Foo to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(foo);
+        Foo to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(foo);
         assertEquals(foo.getString(), to.getString());
         assertNotNull(to.getProtectedSetString());
         assertEquals(foo.getProtectedSetString(), to.getProtectedSetString());
@@ -165,7 +165,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        Bar to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(bar);
+        Bar to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
         assertEquals(bar.getString(), to.getString());
         assertTrue(bar == bar.getBar());

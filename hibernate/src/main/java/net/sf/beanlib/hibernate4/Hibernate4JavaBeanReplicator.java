@@ -39,8 +39,6 @@ public class Hibernate4JavaBeanReplicator extends BeanReplicator {
      * @author Joe D. Velopar
      */
     public static class Factory implements BeanReplicatorSpi.Factory {
-        private Factory() {}
-
         @Override
         public Hibernate4JavaBeanReplicator newBeanReplicatable(BeanTransformerSpi beanTransformer) {
             return new Hibernate4JavaBeanReplicator(beanTransformer);

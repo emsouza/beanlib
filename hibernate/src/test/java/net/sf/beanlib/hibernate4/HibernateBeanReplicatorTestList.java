@@ -49,7 +49,7 @@ public class HibernateBeanReplicatorTestList {
         // Test recursive references
         fooList.addToList(fooList);
         fooList.addToList(fooList.getList());
-        FooWithList toList = new Hibernate4BeanReplicator().initDebug(true).deepCopy(fooList);
+        FooWithList toList = new Hibernate4BeanReplicator().deepCopy(fooList);
 
         assertFalse(fooList.getList() == toList.getList());
 

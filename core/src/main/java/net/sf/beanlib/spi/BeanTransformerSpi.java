@@ -38,7 +38,7 @@ public interface BeanTransformerSpi extends Transformable, BeanPopulatorBaseSpi 
      *
      * @author Joe D. Velopar
      */
-    public static interface Factory {
+    public interface Factory {
 
         /**
          * Returns a bean transformer, given a bean populator factory.
@@ -161,11 +161,6 @@ public interface BeanTransformerSpi extends Transformable, BeanPopulatorBaseSpi 
     // Don't invoke this method, except from within the BeanPopulatorSpi implementation class.
     @Override
     BeanTransformerSpi initBeanPopulationExceptionHandler(BeanPopulationExceptionHandler beanPopulationExceptionHandler);
-
-    // Overrides here for co-variant return type.
-    // Don't invoke this method, except from within the BeanPopulatorSpi implementation class.
-    @Override
-    BeanTransformerSpi initDebug(boolean debug);
 
     // Overrides here for co-variant return type.
     // Don't invoke this method, except from within the BeanPopulatorSpi implementation class.

@@ -77,10 +77,6 @@ public interface BeanPopulatorSpi extends BeanPopulatorBaseSpi {
 
     // Overrides for co-variant return type.
     @Override
-    BeanPopulatorSpi initDebug(boolean debug);
-
-    // Overrides for co-variant return type.
-    @Override
     BeanPopulatorSpi initBeanPopulationExceptionHandler(BeanPopulationExceptionHandler beanPopulationExceptionHandler);
 
     // Overrides for co-variant return type.

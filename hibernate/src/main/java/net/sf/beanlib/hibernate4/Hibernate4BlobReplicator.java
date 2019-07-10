@@ -41,8 +41,6 @@ public class Hibernate4BlobReplicator implements BlobReplicatorSpi {
      * @author Joe D. Velopar
      */
     public static class Factory implements BlobReplicatorSpi.Factory {
-        private Factory() {}
-
         @Override
         public Hibernate4BlobReplicator newBlobReplicatable(BeanTransformerSpi beanTransformer) {
             return new Hibernate4BlobReplicator();
