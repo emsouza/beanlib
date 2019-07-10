@@ -22,13 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class SubTypeTest {
 
     public static abstract class A {}
@@ -38,7 +40,7 @@ public class SubTypeTest {
     public static class C extends A {}
 
     public static class D {
-        private List<A> list = new ArrayList<A>();
+        private List<A> list = new ArrayList<>();
 
         public List<A> getList() {
             return list;
@@ -54,7 +56,7 @@ public class SubTypeTest {
     }
 
     @Test
-    public void testCopy() {
+    public void copy() {
         D d = new D();
         d.addToList(new B());
         d.addToList(new C());
@@ -68,9 +70,5 @@ public class SubTypeTest {
             assertFalse(type == A.class);
             assertTrue(type == B.class || type == C.class);
         }
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(SubTypeTest.class);
     }
 }

@@ -22,8 +22,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 import net.sf.beanlib.provider.Bar;
 import net.sf.beanlib.provider.BeanPopulator;
@@ -36,9 +37,11 @@ import net.sf.beanlib.spi.DetailedPropertyFilter;
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HibernateBeanReplicatorTest {
+
     @Test
-    public void testDeepCopy() {
+    public void deepCopy() {
         Foo foo = new Foo();
         foo.setBoo(true);
         foo.setString("from");
@@ -55,7 +58,7 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testDeepCopy2() {
+    public void deepCopy2() {
         Bar bar = new Bar();
         bar.setBoo(true);
         bar.setString("from");
@@ -81,7 +84,7 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testShallowCopy() {
+    public void shallowCopy() {
         Foo foo = new Foo();
         foo.setBoo(true);
         foo.setString("from");
@@ -98,7 +101,7 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testShallowCopy2() {
+    public void shallowCopy2() {
         Bar bar = new Bar();
         bar.setBoo(true);
         bar.setString("from");
@@ -113,15 +116,10 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testDeepCopyProtected() {
+    public void deepCopyProtected() {
         Foo foo = new Foo("foo");
         foo.setBoo(true);
         foo.setString("from");
-
-        // Foo to = (Foo)new HibernateBeanReplicator(foo).initDebug(true).deepCopy();
-        // assertEquals(foo.getString(), to.getString());
-        // assertFalse(foo.getProtectedSetString().equals(to.getProtectedSetString()));
-        // assertNull(to.getProtectedSetString());
 
         Foo to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(foo);
         assertEquals(foo.getString(), to.getString());
@@ -130,21 +128,12 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testDeepCopyProtected2() {
+    public void deepCopyProtected2() {
         Bar bar = new Bar("bar");
         bar.setBoo(true);
         bar.setString("from");
         bar.setBarString("barString");
         bar.setBar(bar);
-
-        // Bar to = (Bar)new HibernateBeanReplicator(bar).initDebug(false).deepCopy();
-        // assertEquals(bar.getBarString(), to.getBarString());
-        // assertEquals(bar.getString(), to.getString());
-        // assertTrue(bar == bar.getBar());
-        // assertTrue(to.getBar() == to);
-        // assertFalse(to.getBar() == bar);
-        // assertFalse(bar.getProtectedSetString().equals(to.getProtectedSetString()));
-        // assertNull(to.getProtectedSetString());
 
         Bar to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
@@ -157,14 +146,10 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testShallowCopyProtected() {
+    public void shallowCopyProtected() {
         Foo foo = new Foo("foo");
         foo.setBoo(true);
         foo.setString("from");
-
-        // Foo to = (Foo)new HibernateBeanReplicator(foo).initDebug(false).shallowCopy();
-        // assertEquals(foo.getString(), to.getString());
-        // assertNull(to.getProtectedSetString());
 
         Foo to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(foo);
         assertEquals(foo.getString(), to.getString());
@@ -173,19 +158,12 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testShallowCopyProtected2() {
+    public void shallowCopyProtected2() {
         Bar bar = new Bar("bar");
         bar.setBoo(true);
         bar.setString("from");
         bar.setBarString("barString");
         bar.setBar(bar);
-
-        // Bar to = (Bar)new HibernateBeanReplicator(bar).initDebug(false).shallowCopy();
-        // assertEquals(bar.getBarString(), to.getBarString());
-        // assertEquals(bar.getString(), to.getString());
-        // assertTrue(bar == bar.getBar());
-        // assertNull(to.getProtectedSetString());
-        // assertNull(to.getBar());
 
         Bar to = new Hibernate4BeanReplicator().initDebug(false).initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
@@ -197,7 +175,7 @@ public class HibernateBeanReplicatorTest {
     }
 
     @Test
-    public void testDeepCopyRegardless() {
+    public void deepCopyRegardless() {
         Type1 t1 = new Type1();
         t1.setF1("f1 of type1");
         t1.setF2("f2 of type1");
@@ -213,9 +191,5 @@ public class HibernateBeanReplicatorTest {
         assertEquals(t1.getF2(), t2.getF2());
         assertEquals(t1.getType().getF1(), t2.getType().getF1());
         assertEquals(t1.getType().getF2(), t2.getType().getF2());
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HibernateBeanReplicatorTest.class);
     }
 }

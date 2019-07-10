@@ -25,8 +25,9 @@ import java.util.Date;
 import java.util.Map;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
@@ -35,10 +36,11 @@ import net.sf.beanlib.spi.CustomBeanTransformerSpi;
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class DateTest {
 
     @Test
-    public void testConvertTimestampToDate() {
+    public void convertTimestampToDate() {
         final Pojo source = new Pojo();
         // Replicate Timestamp into Date
         HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
@@ -84,9 +86,5 @@ public class DateTest {
         assertSame(source.getDate(), source.getDateRef());
         assertSame(clone.getDate(), clone.getDateRef());
         assertNotSame(source.getDate(), clone.getDate());
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(DateTest.class);
     }
 }

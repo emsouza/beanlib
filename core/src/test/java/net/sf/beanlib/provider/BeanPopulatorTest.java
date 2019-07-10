@@ -22,13 +22,15 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.collector.ProtectedSetterMethodCollector;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class BeanPopulatorTest {
 
     @Test
@@ -225,9 +227,5 @@ public class BeanPopulatorTest {
             assertNotNull(t1.getType());
             assertNull(t2.getType());
         }
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(BeanPopulatorTest.class);
     }
 }

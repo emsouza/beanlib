@@ -15,6 +15,7 @@
  */
 package net.sf.beanlib.hibernate;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
@@ -26,31 +27,31 @@ import javassist.util.proxy.ProxyFactory;
  * @author Joe D. Velopar
  * @author Hanson Char
  */
+@SuppressWarnings("unchecked")
 public class UnEnhancer {
 
     private UnEnhancer() {}
 
     /**
-     * Returns true if the given class is found to be a javassist enhanced class; false otherwise.
+     * Returns true if the given class is found to be a ByteBuddy/Javassist enhanced class; false otherwise.
      */
-    private static boolean isJavassistEnhanced(Class<?> c) {
-        return ProxyFactory.isProxyClass(c);
+    private static boolean isHibernateEnhanced(Class<?> c) {
+        return ProxyFactory.isProxyClass(c) || HibernateProxy.class.isAssignableFrom(c);
     }
 
     /**
-     * Digs out the pre CGLIB/Javassist enhanced class, if any.
+     * Digs out the pre ByteBuddy/Javassist enhanced class, if any.
      */
     public static <T> Class<T> unenhanceClass(Class<?> c) {
         boolean enhanced = true;
 
         while (c != null && enhanced) {
-            enhanced = isJavassistEnhanced(c);
+            enhanced = isHibernateEnhanced(c);
             if (enhanced) {
                 c = c.getSuperclass();
             }
         }
 
-        @SuppressWarnings("unchecked")
         Class<T> ret = (Class<T>) c;
         return ret;
     }
@@ -60,7 +61,7 @@ public class UnEnhancer {
         boolean enhanced = true;
 
         while (c != null && enhanced) {
-            enhanced = isJavassistEnhanced(c);
+            enhanced = isHibernateEnhanced(c);
             if (enhanced) {
                 if (object instanceof HibernateProxy) {
                     HibernateProxy hibernateProxy = (HibernateProxy) object;
@@ -70,34 +71,23 @@ public class UnEnhancer {
                         Object impl = lazyInitializer.getImplementation();
 
                         if (impl != null) {
-                            @SuppressWarnings("unchecked")
                             Class<T> ret = (Class<T>) impl.getClass();
                             return ret;
                         }
                     } catch (HibernateException ex) {
                         LoggerFactory.getLogger(UnEnhancer.class).warn("Unable to retrieve the underlying persistent object", ex);
                     }
-                    @SuppressWarnings("unchecked")
                     Class<T> ret = lazyInitializer.getPersistentClass();
                     return ret;
                 }
                 c = c.getSuperclass();
             }
         }
-        @SuppressWarnings("unchecked")
         Class<T> ret = (Class<T>) c;
         return ret;
     }
 
     public static <T> T unenhanceObject(T object) {
-        if (object instanceof HibernateProxy) {
-            HibernateProxy hibernateProxy = (HibernateProxy) object;
-            LazyInitializer lazyInitializer = hibernateProxy.getHibernateLazyInitializer();
-
-            @SuppressWarnings("unchecked")
-            T ret = (T) lazyInitializer.getImplementation();
-            return ret;
-        }
-        return object;
+        return (T) Hibernate.unproxy(object);
     }
 }

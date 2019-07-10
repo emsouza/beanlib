@@ -130,7 +130,7 @@ public class HibernateDtoCopier {
         if (hibernateBeans == null) {
             return null;
         }
-        List<Object> list = new ArrayList<Object>(hibernateBeans.size());
+        List<Object> list = new ArrayList<>(hibernateBeans.size());
         HibernateBeanReplicator replicator = createHibernateBeanReplicator();
 
         for (Object obj : hibernateBeans) {
@@ -230,7 +230,7 @@ public class HibernateDtoCopier {
             return null;
         }
 
-        List<Object> list = new ArrayList<Object>(hibernateBeans.size());
+        List<Object> list = new ArrayList<>(hibernateBeans.size());
 
         for (Object entityBean : hibernateBeans) {
             Object to = copy(entityBean, ArrayUtils.EMPTY_CLASS_ARRAY);
@@ -254,7 +254,7 @@ public class HibernateDtoCopier {
         if (hibernateBeans == null) {
             return null;
         }
-        List<E> list = new ArrayList<E>(hibernateBeans.size());
+        List<E> list = new ArrayList<>(hibernateBeans.size());
 
         for (Object entityBean : hibernateBeans) {
             E to = copy(targetEntityType, entityBean, interestedEntityTypes, collectionPropertyNames);
@@ -333,7 +333,7 @@ public class HibernateDtoCopier {
                 entityBeanClassSet = Collections.emptySet();
             } else {
                 // entity classes explicitly specified
-                entityBeanClassSet = new HashSet<Class<?>>(Arrays.asList(interestedEntityTypes));
+                entityBeanClassSet = new HashSet<>(Arrays.asList(interestedEntityTypes));
             }
         }
         // Assumes all Collection properties
@@ -345,7 +345,7 @@ public class HibernateDtoCopier {
                 collectionPropertyNameSet = Collections.emptySet();
             } else {
                 // Collection properties explicitly specified.
-                collectionPropertyNameSet = new HashSet<CollectionPropertyName<?>>(Arrays.asList(collectionPropertyNames));
+                collectionPropertyNameSet = new HashSet<>(Arrays.asList(collectionPropertyNames));
             }
         }
         PropertyFilter propertyFilter = new HibernatePropertyFilter(applicationPackagePrefix, entityBeanClassSet, collectionPropertyNameSet, null);
@@ -355,6 +355,5 @@ public class HibernateDtoCopier {
         @SuppressWarnings("unchecked")
         E ret = (E) replicator.copy(from, UnEnhancer.unenhanceClass(targetEntityType));
         return ret;
-
     }
 }

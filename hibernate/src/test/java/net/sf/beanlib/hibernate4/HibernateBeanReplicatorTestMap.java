@@ -25,21 +25,23 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.spi.PropertyFilter;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HibernateBeanReplicatorTestMap {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateBeanReplicatorTestMap.class);
 
     @Test
-    public void testDeepCopyMap() {
+    public void deepCopyMap() {
         FooWithMap fooMap = new FooWithMap(null);
         fooMap.addToMap("1", "a");
         fooMap.addToMap("2", "b");
@@ -75,7 +77,7 @@ public class HibernateBeanReplicatorTestMap {
 
     @SuppressWarnings("unchecked")
     @Test
-    public void testCopyMap() {
+    public void copyMap() {
         FooWithMap fooMap = new FooWithMap(null);
         fooMap.addToMap("1", "a");
         fooMap.addToMap("2", "b");
@@ -115,9 +117,5 @@ public class HibernateBeanReplicatorTestMap {
             Map<Object, Object> toMap = toFooWithMap.getMap();
             assertNull(toMap);
         }
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HibernateBeanReplicatorTestMap.class);
     }
 }

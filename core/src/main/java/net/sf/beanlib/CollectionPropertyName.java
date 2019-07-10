@@ -39,10 +39,10 @@ public class CollectionPropertyName<T> {
 
     /** Convenient factory method. */
     public static <T> CollectionPropertyName<T>[] createCollectionPropertyNames(Class<T> declaringClass, String[] collectionProperties) {
-        Set<CollectionPropertyName<T>> set = new HashSet<CollectionPropertyName<T>>();
+        Set<CollectionPropertyName<T>> set = new HashSet<>();
 
         for (String s : collectionProperties) {
-            set.add(new CollectionPropertyName<T>(declaringClass, s));
+            set.add(new CollectionPropertyName<>(declaringClass, s));
         }
 
         @SuppressWarnings("unchecked")

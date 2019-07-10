@@ -47,7 +47,7 @@ public class Factory {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @AttributeAccessor("field")
     @JoinColumn(name = "supp_ref")
-    private Set<Supplier> suppliers = new HashSet<Supplier>();
+    private Set<Supplier> suppliers = new HashSet<>();
 
     public Collection<Supplier> getSuppliers() {
         return this.suppliers;
@@ -63,7 +63,7 @@ public class Factory {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "con_ref")
-    private Set<Contract> contracts = new HashSet<Contract>();
+    private Set<Contract> contracts = new HashSet<>();
 
     public void addContract(final Contract con) {
         this.contracts.add(con);

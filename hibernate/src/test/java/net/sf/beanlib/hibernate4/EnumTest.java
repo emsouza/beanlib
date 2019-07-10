@@ -20,8 +20,9 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
@@ -30,8 +31,10 @@ import net.sf.beanlib.spi.CustomBeanTransformerSpi;
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class EnumTest {
-    public static enum Status {
+
+    public enum Status {
         BEGIN,
         WIP,
         END;
@@ -59,10 +62,11 @@ public class EnumTest {
     }
 
     @Test
-    public void testCopyWithCustomTransformer() {
+    public void copyWithCustomTransformer() {
         C c = new C();
         c.setStatus(Status.BEGIN);
         c.setTestString("testStr");
+
         // Customer transformer used to be necessary to handle enum,
         // before beanlib was entirely moved to Java 5.
         HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
@@ -90,7 +94,7 @@ public class EnumTest {
     }
 
     @Test
-    public void testCopy() {
+    public void copy() {
         C c = new C();
         c.setStatus(Status.BEGIN);
         c.setTestString("testStr");
@@ -99,9 +103,5 @@ public class EnumTest {
         assertNotSame(c2, c);
         assertSame(c2.getStatus(), c.getStatus());
         assertEquals(c.getTestString(), c2.getTestString());
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(EnumTest.class);
     }
 }

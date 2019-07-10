@@ -21,15 +21,18 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.provider.replicator.BeanReplicator;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class ByteArrayCopyTest {
+
     private static class P {
         private byte[] bytes;
 
@@ -55,7 +58,7 @@ public class ByteArrayCopyTest {
     }
 
     @Test
-    public void testArrays() {
+    public void arrays() {
         P p1 = new P();
         byte[] bytes = { 1, 2, 3 };
         p1.setBytes(bytes);
@@ -85,7 +88,7 @@ public class ByteArrayCopyTest {
     }
 
     @Test
-    public void testBeanReplicator() {
+    public void beanReplicator() {
         P p1 = new P();
         byte[] bytes = { 1, 2, 3 };
         p1.setBytes(bytes);
@@ -97,7 +100,7 @@ public class ByteArrayCopyTest {
     }
 
     @Test
-    public void testHibernate3BeanReplicator() {
+    public void hibernate3BeanReplicator() {
         P p1 = new P();
         byte[] bytes = { 1, 2, 3 };
         p1.setBytes(bytes);
@@ -107,9 +110,4 @@ public class ByteArrayCopyTest {
         assertNotSame(p1.getBytes(), p2.getBytes());
         assertTrue(Arrays.equals(p1.getBytes(), p2.getBytes()));
     }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(ByteArrayCopyTest.class);
-    }
-
 }

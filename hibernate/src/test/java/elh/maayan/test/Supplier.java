@@ -63,7 +63,7 @@ public class Supplier {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "contracts")
-    private Set<Contract> contracts = new HashSet<Contract>();
+    private Set<Contract> contracts = new HashSet<>();
 
     public Collection<Contract> getContracts() {
         return this.contracts;

@@ -20,11 +20,13 @@ import static org.junit.Assert.assertTrue;
 import java.util.Date;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 import net.sf.beanlib.hibernate4.Hibernate4BeanReplicator;
 
+@RunWith(JUnit4.class)
 public class OrderedMethodCollectorTest {
 
     @Test
@@ -40,9 +42,5 @@ public class OrderedMethodCollectorTest {
         HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initSetterMethodCollector(new OrderedMethodCollector());
         B a1clone = replicator.copy(b1);
         assertTrue(a1clone.getBSet().size() == 2);
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(OrderedMethodCollectorTest.class);
     }
 }

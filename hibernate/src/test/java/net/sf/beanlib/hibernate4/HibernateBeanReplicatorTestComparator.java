@@ -28,14 +28,14 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import org.junit.Test;
-
-import junit.framework.JUnit4TestAdapter;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HibernateBeanReplicatorTestComparator {
-    // private Log log = LogFactory.getLog(this.getClass());
 
     private static Comparator<String> reverseComparator = new Comparator<String>() {
         @Override
@@ -46,8 +46,8 @@ public class HibernateBeanReplicatorTestComparator {
     };
 
     @Test
-    public void testDeepCopySet() {
-        Set<String> fromSet = new TreeSet<String>();
+    public void deepCopySet() {
+        Set<String> fromSet = new TreeSet<>();
         fromSet.add("1");
         fromSet.add("2");
         @SuppressWarnings("unchecked")
@@ -57,8 +57,8 @@ public class HibernateBeanReplicatorTestComparator {
     }
 
     @Test
-    public void testDeepCopySortedSetWithComparator() {
-        SortedSet<String> fromSet = new TreeSet<String>(reverseComparator);
+    public void deepCopySortedSetWithComparator() {
+        SortedSet<String> fromSet = new TreeSet<>(reverseComparator);
         fromSet.add("1");
         fromSet.add("2");
         @SuppressWarnings("unchecked")
@@ -72,8 +72,8 @@ public class HibernateBeanReplicatorTestComparator {
     }
 
     @Test
-    public void testDeepCopyMap() {
-        Map<String, String> fromMap = new TreeMap<String, String>();
+    public void deepCopyMap() {
+        Map<String, String> fromMap = new TreeMap<>();
         fromMap.put("1", "1val");
         fromMap.put("2", "2val");
         @SuppressWarnings("unchecked")
@@ -83,8 +83,8 @@ public class HibernateBeanReplicatorTestComparator {
     }
 
     @Test
-    public void testDeepCopySortedMapWithComparator() {
-        SortedMap<String, String> fromMap = new TreeMap<String, String>(reverseComparator);
+    public void deepCopySortedMapWithComparator() {
+        SortedMap<String, String> fromMap = new TreeMap<>(reverseComparator);
         fromMap.put("1", "1val");
         fromMap.put("2", "2val");
         @SuppressWarnings("unchecked")
@@ -95,9 +95,5 @@ public class HibernateBeanReplicatorTestComparator {
         assertNotNull(fromMap.comparator());
         assertNotNull(toMap.comparator());
         assertNotSame(fromMap.comparator(), toMap.comparator());
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HibernateBeanReplicatorTestComparator.class);
     }
 }

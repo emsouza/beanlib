@@ -25,21 +25,23 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.CollectionPropertyName;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HibernateBeanReplicatorTestList {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernateBeanReplicatorTestList.class);
 
     @Test
-    public void testDeepCopyList() {
+    public void deepCopyList() {
         FooWithList fooList = new FooWithList();
         fooList.addToList("1");
         fooList.addToList("2");
@@ -113,9 +115,5 @@ public class HibernateBeanReplicatorTestList {
             FooWithList toList = new Hibernate4BeanReplicator().deepCopy(fooList);
             assertNull(toList.getList());
         }
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HibernateBeanReplicatorTestList.class);
     }
 }

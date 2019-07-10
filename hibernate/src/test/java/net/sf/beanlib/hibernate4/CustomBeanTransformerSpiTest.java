@@ -20,8 +20,9 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.provider.replicator.BeanReplicator;
@@ -31,7 +32,9 @@ import net.sf.beanlib.spi.CustomBeanTransformerSpi;
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class CustomBeanTransformerSpiTest {
+
     static class A {
         private B b;
 
@@ -87,7 +90,7 @@ public class CustomBeanTransformerSpiTest {
     }
 
     @Test
-    public void testAbstractClassCopyViaBeanReplicator() {
+    public void abstractClassCopyViaBeanReplicator() {
         A fromA = new A();
         B1 fromB1 = new B1();
         B2 fromB2 = new B2();
@@ -108,7 +111,7 @@ public class CustomBeanTransformerSpiTest {
     }
 
     @Test
-    public void testAbstractClassCopyViaBeanReplicator2() {
+    public void abstractClassCopyViaBeanReplicator2() {
         A fromA = new A();
         B1 fromB1 = new B1();
         B2 fromB2 = new B2();
@@ -128,7 +131,7 @@ public class CustomBeanTransformerSpiTest {
     }
 
     @Test
-    public void testAbstractClassCopyViaHibernate3BeanReplicator() {
+    public void abstractClassCopyViaHibernate3BeanReplicator() {
         A fromA = new A();
         B1 fromB1 = new B1();
         B2 fromB2 = new B2();
@@ -148,7 +151,7 @@ public class CustomBeanTransformerSpiTest {
     }
 
     @Test
-    public void testAbstractClassCopyViaHibernate3BeanReplicator2() {
+    public void abstractClassCopyViaHibernate3BeanReplicator2() {
         A fromA = new A();
         B1 fromB1 = new B1();
         B2 fromB2 = new B2();
@@ -166,9 +169,4 @@ public class CustomBeanTransformerSpiTest {
         B2 toB2 = (B2) toB1.getB();
         assertNotSame(fromB2, toB2);
     }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(CustomBeanTransformerSpiTest.class);
-    }
-
 }

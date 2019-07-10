@@ -20,13 +20,15 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
-
-import junit.framework.JUnit4TestAdapter;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class Hibernate4DtoCopierTest {
+
     public static class Parent {
         private Foo foo;
 
@@ -67,9 +69,4 @@ public class Hibernate4DtoCopierTest {
         assertNotNull(childCopy.getParent());
         assertSame(childCopy, childCopy.getParent().getFoo());
     }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(Hibernate4DtoCopierTest.class);
-    }
-
 }

@@ -32,8 +32,9 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.BeanlibException;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.provider.BeanTransformer;
@@ -42,6 +43,7 @@ import net.sf.beanlib.provider.replicator.BeanReplicator;
 /**
  * @author Hanson Char
  */
+@RunWith(JUnit4.class)
 public class CustomBeanTransformerTest {
 
     public static class Point {
@@ -141,7 +143,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test(expected = BeanlibException.class)
-    public void testReplicationFailure() {
+    public void replicationFailure() {
         // Initialize a bean
         Bean from = new Bean();
         from.setPoint(new Point(1, 2));
@@ -152,7 +154,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void testCustomReplicationSuccess() {
+    public void customReplicationSuccess() {
         // Initialize a bean
         Bean from = new Bean();
         from.setPoint(new Point(1, 2));
@@ -172,7 +174,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void testCustomCollectionReplication() {
+    public void customCollectionReplication() {
         Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p3 = p0;
@@ -197,7 +199,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void testCustomArrayReplication() {
+    public void customArrayReplication() {
         final Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p3 = p0;
@@ -224,12 +226,12 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void testCustomMapReplication() {
+    public void customMapReplication() {
         Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p56 = new Point(5, 6);
         final Point p3 = p0;
-        Map<String, Point> map = new HashMap<String, Point>();
+        Map<String, Point> map = new HashMap<>();
         map.put("p0", p0);
         map.put("pnull", null);
         map.put("p5-6", p56);
@@ -263,9 +265,5 @@ public class CustomBeanTransformerTest {
 
         assertThat(to.getMap().get("p5-6"), is(p56));
         assertThat(to.getMap().get("p5-6"), not(sameInstance(p56)));
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(new Object() {}.getClass().getEnclosingClass());
     }
 }

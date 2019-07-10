@@ -19,8 +19,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanPopulator;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.spi.DetailedPropertyFilter;
@@ -28,15 +29,16 @@ import net.sf.beanlib.spi.DetailedPropertyFilter;
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HeteroImmutableReplicatorTest {
 
-    public static enum FromEnum {
+    public enum FromEnum {
         F1,
         F2,
         F3,;
     }
 
-    public static enum ToEnum {
+    public enum ToEnum {
         T1,
         T2,
         T3,;
@@ -67,7 +69,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void testDefaultPoputlateEnum() {
+    public void defaultPoputlateEnum() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -91,7 +93,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void testPoputlateEnum() {
+    public void poputlateEnum() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -116,7 +118,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void testPopulateDefaultAcrossEnums() {
+    public void populateDefaultAcrossEnums() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -130,7 +132,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void testPopulateAcrossEnums() {
+    public void populateAcrossEnums() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -142,9 +144,5 @@ public class HeteroImmutableReplicatorTest {
                     .initTransformer(new BeanTransformer().initImmutableReplicatableFactory(HeteroImmutableReplicator.factory)).populate();
             assertTrue(to.getEnumMember() == ToEnum.values()[e.ordinal()]);
         }
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HeteroImmutableReplicatorTest.class);
     }
 }

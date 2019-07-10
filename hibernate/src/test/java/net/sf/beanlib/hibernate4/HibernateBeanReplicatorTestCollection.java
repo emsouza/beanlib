@@ -23,13 +23,15 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.Test;
-
-import junit.framework.JUnit4TestAdapter;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 /**
  * @author Joe D. Velopar
  */
+@RunWith(JUnit4.class)
 public class HibernateBeanReplicatorTestCollection {
+
     private static class A {
         Set<String> set;
 
@@ -43,9 +45,9 @@ public class HibernateBeanReplicatorTestCollection {
     }
 
     @Test
-    public void testLinkedHashSet() {
+    public void linkedHashSet() {
         A from = new A();
-        Set<String> set = new LinkedHashSet<String>();
+        Set<String> set = new LinkedHashSet<>();
         set.add("a");
         set.add("c");
         set.add("b");
@@ -67,9 +69,5 @@ public class HibernateBeanReplicatorTestCollection {
         }
 
         assertNotSame(from.getSet(), to.getSet());
-    }
-
-    public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(HibernateBeanReplicatorTestCollection.class);
     }
 }
