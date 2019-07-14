@@ -26,6 +26,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 /**
  * @author Joe D. Velopar
@@ -61,7 +62,7 @@ public class SubTypeTest {
         d.addToList(new B());
         d.addToList(new C());
 
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator();
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator();
         D d2 = replicator.deepCopy(d);
         assertTrue(d2.getList().size() == d.getList().size());
 

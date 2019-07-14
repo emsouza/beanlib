@@ -24,6 +24,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.PropertyInfo;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.provider.replicator.BeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
@@ -137,7 +138,7 @@ public class CustomBeanTransformerSpiTest {
         B2 fromB2 = new B2();
         fromB1.setB(fromB2);
         fromA.setB(fromB1);
-        A toA = new Hibernate4BeanReplicator().initCustomTransformerFactory(new MyCustomBeanTransformer.Factory()).copy(fromA);
+        A toA = new Hibernate5BeanReplicator().initCustomTransformerFactory(new MyCustomBeanTransformer.Factory()).copy(fromA);
         assertNotNull(toA);
         assertNotSame(fromA, toA);
 
@@ -157,7 +158,7 @@ public class CustomBeanTransformerSpiTest {
         B2 fromB2 = new B2();
         fromB1.setB(fromB2);
         fromA.setB(fromB1);
-        A toA = new Hibernate4BeanReplicator().copy(fromA);
+        A toA = new Hibernate5BeanReplicator().copy(fromA);
         assertNotNull(toA);
         assertNotSame(fromA, toA);
 

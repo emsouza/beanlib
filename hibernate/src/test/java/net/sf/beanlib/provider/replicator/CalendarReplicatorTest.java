@@ -26,7 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import net.sf.beanlib.hibernate4.Hibernate4BeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 /**
  * @author Joe D. Velopar
@@ -82,7 +82,7 @@ public class CalendarReplicatorTest {
     public void hibernate5BeanReplicator() {
         CalendarBean from = new CalendarBean();
         from.setCalendar(Calendar.getInstance());
-        CalendarBean to = new Hibernate4BeanReplicator().copy(from);
+        CalendarBean to = new Hibernate5BeanReplicator().copy(from);
 
         assertThat(from, not(sameInstance(to)));
         assertThat(from.getCalendar(), not(sameInstance(to.getCalendar())));

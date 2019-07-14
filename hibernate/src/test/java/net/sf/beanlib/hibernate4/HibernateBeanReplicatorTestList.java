@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.sf.beanlib.CollectionPropertyName;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 /**
  * @author Joe D. Velopar
@@ -49,7 +50,7 @@ public class HibernateBeanReplicatorTestList {
         // Test recursive references
         fooList.addToList(fooList);
         fooList.addToList(fooList.getList());
-        FooWithList toList = new Hibernate4BeanReplicator().deepCopy(fooList);
+        FooWithList toList = new Hibernate5BeanReplicator().deepCopy(fooList);
 
         assertFalse(fooList.getList() == toList.getList());
 
@@ -76,17 +77,17 @@ public class HibernateBeanReplicatorTestList {
         fooList.setList(emptyList);
         assertEquals(0, fooList.getList().size());
         {
-            FooWithList toList = new Hibernate4BeanReplicator().copy(fooList);
+            FooWithList toList = new Hibernate5BeanReplicator().copy(fooList);
             assertEquals(0, toList.getList().size());
         }
         {
-            FooWithList toList = new Hibernate4BeanReplicator().deepCopy(fooList);
+            FooWithList toList = new Hibernate5BeanReplicator().deepCopy(fooList);
             assertEquals(0, toList.getList().size());
         }
         // Explicitly specify not to copy any collection properties.
         {
             Set<CollectionPropertyName<?>> collectionPropertyNameSet = Collections.emptySet();
-            Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+            Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
             r.getHibernatePropertyFilter().withCollectionPropertyNameSet(collectionPropertyNameSet);
             FooWithList toList = r.copy(fooList);
             assertNull(toList.getList());
@@ -94,7 +95,7 @@ public class HibernateBeanReplicatorTestList {
         // Deep copy, however, alwlays copy all collection properties regardless.
         {
             Set<CollectionPropertyName<?>> collectionPropertyNameSet = Collections.emptySet();
-            Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+            Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
             r.getHibernatePropertyFilter().withCollectionPropertyNameSet(collectionPropertyNameSet);
             FooWithList toList = r.deepCopy(fooList);
             assertEquals(0, toList.getList().size());
@@ -108,11 +109,11 @@ public class HibernateBeanReplicatorTestList {
         fooList.setList(null);
         assertNull(fooList.getList());
         {
-            FooWithList toList = new Hibernate4BeanReplicator().copy(fooList);
+            FooWithList toList = new Hibernate5BeanReplicator().copy(fooList);
             assertNull(toList.getList());
         }
         {
-            FooWithList toList = new Hibernate4BeanReplicator().deepCopy(fooList);
+            FooWithList toList = new Hibernate5BeanReplicator().deepCopy(fooList);
             assertNull(toList.getList());
         }
     }

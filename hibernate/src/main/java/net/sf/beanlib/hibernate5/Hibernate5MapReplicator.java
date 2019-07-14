@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ import net.sf.beanlib.spi.replicator.MapReplicatorSpi;
  *
  * @author Joe D. Velopar
  */
-public class Hibernate4MapReplicator extends MapReplicator {
+public class Hibernate5MapReplicator extends MapReplicator {
 
     private static final Factory factory = new Factory();
 
@@ -46,16 +46,16 @@ public class Hibernate4MapReplicator extends MapReplicator {
         private Factory() {}
 
         @Override
-        public Hibernate4MapReplicator newMapReplicatable(BeanTransformerSpi beanTransformer) {
-            return new Hibernate4MapReplicator(beanTransformer);
+        public Hibernate5MapReplicator newMapReplicatable(BeanTransformerSpi beanTransformer) {
+            return new Hibernate5MapReplicator(beanTransformer);
         }
     }
 
-    public static Hibernate4MapReplicator newMapReplicatable(BeanTransformerSpi beanTransformer) {
+    public static Hibernate5MapReplicator newMapReplicatable(BeanTransformerSpi beanTransformer) {
         return factory.newMapReplicatable(beanTransformer);
     }
 
-    protected Hibernate4MapReplicator(BeanTransformerSpi beanTransformer) {
+    protected Hibernate5MapReplicator(BeanTransformerSpi beanTransformer) {
         super(beanTransformer);
     }
 

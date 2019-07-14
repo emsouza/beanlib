@@ -25,6 +25,7 @@ import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
 import net.sf.beanlib.spi.CustomBeanTransformerSpi;
 
@@ -69,7 +70,7 @@ public class EnumTest {
 
         // Customer transformer used to be necessary to handle enum,
         // before beanlib was entirely moved to Java 5.
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
             @Override
             public CustomBeanTransformerSpi newCustomBeanTransformer(BeanTransformerSpi beanTransformer) {
                 return new CustomBeanTransformerSpi() {
@@ -98,7 +99,7 @@ public class EnumTest {
         C c = new C();
         c.setStatus(Status.BEGIN);
         c.setTestString("testStr");
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator();
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator();
         C c2 = replicator.deepCopy(c);
         assertNotSame(c2, c);
         assertSame(c2.getStatus(), c.getStatus());

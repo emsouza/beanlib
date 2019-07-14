@@ -30,6 +30,7 @@ import org.junit.runners.JUnit4;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.spi.PropertyFilter;
 
 /**
@@ -56,7 +57,7 @@ public class HibernateBeanReplicatorTestMap {
         fooList.addToList(fooList);
         fooList.addToList(fooList.getList());
         fooMap.addToMap("4", fooList);
-        FooWithMap toMap = new Hibernate4BeanReplicator().deepCopy(fooMap);
+        FooWithMap toMap = new Hibernate5BeanReplicator().deepCopy(fooMap);
 
         assertFalse(fooMap.getMap() == toMap.getMap());
 
@@ -83,14 +84,14 @@ public class HibernateBeanReplicatorTestMap {
         fooMap.addToMap("2", "b");
 
         {
-            FooWithMap toFooWithMap = new Hibernate4BeanReplicator().copy(fooMap);
+            FooWithMap toFooWithMap = new Hibernate5BeanReplicator().copy(fooMap);
             Map<Object, Object> toMap = toFooWithMap.getMap();
             toMap.size();
             // log.info("toMap.size()=" + toMap.size());
             assertEquals(toMap.size(), 2);
         }
         {
-            Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+            Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
             r.getHibernatePropertyFilter().withCollectionPropertyNameSet(null);
             FooWithMap toFooWithMap = r.copy(fooMap);
             Map<Object, Object> toMap = toFooWithMap.getMap();
@@ -99,14 +100,14 @@ public class HibernateBeanReplicatorTestMap {
             assertEquals(toMap.size(), 2);
         }
         {
-            Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+            Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
             r.getHibernatePropertyFilter().withCollectionPropertyNameSet(Collections.EMPTY_SET);
             FooWithMap toFooWithMap = r.copy(fooMap);
             Map<Object, Object> toMap = toFooWithMap.getMap();
             assertNull(toMap);
         }
         {
-            Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+            Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
             r.getHibernatePropertyFilter().withVetoer(new PropertyFilter() {
                 @Override
                 public boolean propagate(String propertyName, Method readerMethod) {

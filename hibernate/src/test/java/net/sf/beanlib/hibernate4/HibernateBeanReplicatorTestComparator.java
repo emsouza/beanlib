@@ -31,6 +31,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
+
 /**
  * @author Joe D. Velopar
  */
@@ -51,7 +53,7 @@ public class HibernateBeanReplicatorTestComparator {
         fromSet.add("1");
         fromSet.add("2");
         @SuppressWarnings("unchecked")
-        Set<String> toSet = new Hibernate4BeanReplicator().deepCopy(fromSet, Set.class);
+        Set<String> toSet = new Hibernate5BeanReplicator().deepCopy(fromSet, Set.class);
         assertNotSame(fromSet, toSet);
         assertEquals(fromSet.size(), toSet.size());
     }
@@ -62,7 +64,7 @@ public class HibernateBeanReplicatorTestComparator {
         fromSet.add("1");
         fromSet.add("2");
         @SuppressWarnings("unchecked")
-        SortedSet<String> toSet = new Hibernate4BeanReplicator().deepCopy(fromSet, SortedSet.class);
+        SortedSet<String> toSet = new Hibernate5BeanReplicator().deepCopy(fromSet, SortedSet.class);
         assertNotSame(fromSet, toSet);
         assertEquals(fromSet.size(), toSet.size());
 
@@ -77,7 +79,7 @@ public class HibernateBeanReplicatorTestComparator {
         fromMap.put("1", "1val");
         fromMap.put("2", "2val");
         @SuppressWarnings("unchecked")
-        Map<String, String> toMap = new Hibernate4BeanReplicator().deepCopy(fromMap, Map.class);
+        Map<String, String> toMap = new Hibernate5BeanReplicator().deepCopy(fromMap, Map.class);
         assertNotSame(fromMap, toMap);
         assertEquals(fromMap.size(), toMap.size());
     }
@@ -88,7 +90,7 @@ public class HibernateBeanReplicatorTestComparator {
         fromMap.put("1", "1val");
         fromMap.put("2", "2val");
         @SuppressWarnings("unchecked")
-        SortedMap<String, String> toMap = new Hibernate4BeanReplicator().deepCopy(fromMap, SortedMap.class);
+        SortedMap<String, String> toMap = new Hibernate5BeanReplicator().deepCopy(fromMap, SortedMap.class);
         assertNotSame(fromMap, toMap);
         assertEquals(fromMap.size(), toMap.size());
 

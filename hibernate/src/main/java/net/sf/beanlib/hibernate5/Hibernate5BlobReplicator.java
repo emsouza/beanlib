@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */package net.sf.beanlib.hibernate4;
+ */package net.sf.beanlib.hibernate5;
 
 import java.sql.Blob;
 
@@ -27,7 +27,7 @@ import net.sf.beanlib.utils.BlobUtils;
  *
  * @author Joe D. Velopar
  */
-public class Hibernate4BlobReplicator implements BlobReplicatorSpi {
+public class Hibernate5BlobReplicator implements BlobReplicatorSpi {
 
     private static final Factory factory = new Factory();
 
@@ -36,24 +36,24 @@ public class Hibernate4BlobReplicator implements BlobReplicatorSpi {
     }
 
     /**
-     * Factory for {@link Hibernate4BlobReplicator}
+     * Factory for {@link Hibernate5BlobReplicator}
      *
      * @author Joe D. Velopar
      */
     public static class Factory implements BlobReplicatorSpi.Factory {
         @Override
-        public Hibernate4BlobReplicator newBlobReplicatable(BeanTransformerSpi beanTransformer) {
-            return new Hibernate4BlobReplicator();
+        public Hibernate5BlobReplicator newBlobReplicatable(BeanTransformerSpi beanTransformer) {
+            return new Hibernate5BlobReplicator();
         }
     }
 
-    public static Hibernate4BlobReplicator newBlobReplicatable(BeanTransformerSpi beanTransformer) {
+    public static Hibernate5BlobReplicator newBlobReplicatable(BeanTransformerSpi beanTransformer) {
         return factory.newBlobReplicatable(beanTransformer);
     }
 
     private final BlobUtils blobUtils = new BlobUtils();
 
-    private Hibernate4BlobReplicator() {}
+    private Hibernate5BlobReplicator() {}
 
     @Override
     public <T> T replicateBlob(Blob fromBlob, Class<T> toClass) {

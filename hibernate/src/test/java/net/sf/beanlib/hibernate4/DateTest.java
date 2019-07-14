@@ -30,6 +30,7 @@ import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
 import net.sf.beanlib.spi.CustomBeanTransformerSpi;
 
@@ -43,7 +44,7 @@ public class DateTest {
     public void convertTimestampToDate() {
         final Pojo source = new Pojo();
         // Replicate Timestamp into Date
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator().initCustomTransformerFactory(new CustomBeanTransformerSpi.Factory() {
             @Override
             public CustomBeanTransformerSpi newCustomBeanTransformer(final BeanTransformerSpi beanTransformer) {
                 return new CustomBeanTransformerSpi() {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import org.hibernate.Hibernate;
 
@@ -28,7 +28,7 @@ import net.sf.beanlib.spi.CustomBeanTransformerSpi;
  * Sample Usage:
  *
  * <pre>
- * HibernateBeanReplicator replicator = new Hibernate4BeanReplicator();
+ * HibernateBeanReplicator replicator = new Hibernate5BeanReplicator();
  * replicator.initCustomTransformerFactory(new LazyHibernateCustomBeanTransformer.Factory());
  * replicator.deepCopy(...);
  * </pre>

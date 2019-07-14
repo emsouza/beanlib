@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import static net.sf.beanlib.utils.ClassUtils.isHibernatePackage;
 import static net.sf.beanlib.utils.ClassUtils.isJavaPackage;
@@ -41,7 +41,7 @@ import net.sf.beanlib.spi.replicator.CollectionReplicatorSpi;
  *
  * @author Joe D. Velopar
  */
-public class Hibernate4CollectionReplicator extends CollectionReplicator {
+public class Hibernate5CollectionReplicator extends CollectionReplicator {
 
     private static final Factory factory = new Factory();
 
@@ -50,22 +50,22 @@ public class Hibernate4CollectionReplicator extends CollectionReplicator {
     }
 
     /**
-     * Factory for {@link Hibernate4CollectionReplicator}
+     * Factory for {@link Hibernate5CollectionReplicator}
      *
      * @author Joe D. Velopar
      */
     public static class Factory implements CollectionReplicatorSpi.Factory {
         @Override
-        public Hibernate4CollectionReplicator newCollectionReplicatable(BeanTransformerSpi beanTransformer) {
-            return new Hibernate4CollectionReplicator(beanTransformer);
+        public Hibernate5CollectionReplicator newCollectionReplicatable(BeanTransformerSpi beanTransformer) {
+            return new Hibernate5CollectionReplicator(beanTransformer);
         }
     }
 
-    public static Hibernate4CollectionReplicator newCollectionReplicatable(BeanTransformerSpi beanTransformer) {
+    public static Hibernate5CollectionReplicator newCollectionReplicatable(BeanTransformerSpi beanTransformer) {
         return factory.newCollectionReplicatable(beanTransformer);
     }
 
-    protected Hibernate4CollectionReplicator(BeanTransformerSpi beanTransformer) {
+    protected Hibernate5CollectionReplicator(BeanTransformerSpi beanTransformer) {
         super(beanTransformer);
     }
 

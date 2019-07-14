@@ -67,7 +67,7 @@ import net.sf.beanlib.spi.PropertyFilter;
  * no longer supported.
  *
  * @see CustomBeanTransformerSpi
- * @see net.sf.beanlib.hibernate4.Hibernate4BeanReplicator
+ * @see net.sf.beanlib.hibernate5.Hibernate5BeanReplicator
  * @author Joe D. Velopar
  */
 public abstract class HibernateBeanReplicator implements BeanPopulatorBaseSpi {
@@ -76,8 +76,8 @@ public abstract class HibernateBeanReplicator implements BeanPopulatorBaseSpi {
     private final BeanTransformerSpi hibernateBeanTransformer;
 
     /**
-     * You probably want to construct a {@link net.sf.beanlib.hibernate4.Hibernate4BeanReplicator
-     * Hibernate4BeanReplicator} directly instead of this ?
+     * You probably want to construct a {@link net.sf.beanlib.hibernate5.Hibernate5BeanReplicator
+     * Hibernate5BeanReplicator} directly instead of this ?
      */
     protected HibernateBeanReplicator(BeanTransformerSpi hibernateBeanTransformer) {
         if (hibernateBeanTransformer == null) {

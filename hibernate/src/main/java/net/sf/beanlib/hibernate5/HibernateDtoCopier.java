@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import static net.sf.beanlib.utils.ClassUtils.fqcn;
 
@@ -57,9 +57,9 @@ import net.sf.beanlib.spi.PropertyFilter;
  * <li>Specifying a set of collection and map properties that will be replicated;</li>
  * </ul>
  * </ol>
- * For more advanced options and more control, consider using {@link Hibernate4BeanReplicator} directly.
+ * For more advanced options and more control, consider using {@link Hibernate5BeanReplicator} directly.
  *
- * @see Hibernate4BeanReplicator
+ * @see Hibernate5BeanReplicator
  * @author Joe D. Velopar
  */
 public class HibernateDtoCopier {
@@ -102,8 +102,8 @@ public class HibernateDtoCopier {
     }
 
     /** Returns the implementation instance that performs the actual replication. */
-    protected Hibernate4BeanReplicator createHibernateBeanReplicator() {
-        return new Hibernate4BeanReplicator();
+    protected Hibernate5BeanReplicator createHibernateBeanReplicator() {
+        return new Hibernate5BeanReplicator();
     }
 
     /**

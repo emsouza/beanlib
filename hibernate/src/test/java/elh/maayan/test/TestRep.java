@@ -19,7 +19,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import net.sf.beanlib.hibernate4.Hibernate4BeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.spi.PropertyFilter;
 
 @RunWith(JUnit4.class)
@@ -83,7 +83,7 @@ public class TestRep {
             assertEquals(supplier.getName(), suppliers.iterator().next().getName());
         }
 
-        final Hibernate4BeanReplicator r = new Hibernate4BeanReplicator();
+        final Hibernate5BeanReplicator r = new Hibernate5BeanReplicator();
         r.initPropertyFilter(new PropertyFilter() {
 
             @Override

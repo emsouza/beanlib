@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
-import net.sf.beanlib.hibernate4.Hibernate4BeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 @RunWith(JUnit4.class)
 public class OrderedMethodCollectorTest {
@@ -39,7 +39,7 @@ public class OrderedMethodCollectorTest {
         b1.addB(b2);
         assertTrue(2 == b1.getBSet().size());
 
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initSetterMethodCollector(new OrderedMethodCollector());
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator().initSetterMethodCollector(new OrderedMethodCollector());
         B a1clone = replicator.copy(b1);
         assertTrue(a1clone.getBSet().size() == 2);
     }

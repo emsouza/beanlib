@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import junit.framework.JUnit4TestAdapter;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 /**
  * @author Joe D. Velopar
@@ -42,7 +43,7 @@ public class HibernateBeanReplicatorTestMySet {
         fooList.addToList(fooList);
         fooList.addToList(fooList.getList());
         fooWithMySet.addToMySet(fooList);
-        FooWithMySet toSet = new Hibernate4BeanReplicator().deepCopy(fooWithMySet);
+        FooWithMySet toSet = new Hibernate5BeanReplicator().deepCopy(fooWithMySet);
 
         assertFalse(fooWithMySet.getMySet() == toSet.getMySet());
         assertTrue(fooWithMySet.getMySet().size() == toSet.getMySet().size());

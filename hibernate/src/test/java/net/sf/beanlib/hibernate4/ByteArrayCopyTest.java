@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.provider.replicator.BeanReplicator;
 
@@ -79,7 +80,7 @@ public class ByteArrayCopyTest {
         }
 
         {
-            PArray parray2 = new Hibernate4BeanReplicator().copy(parray);
+            PArray parray2 = new Hibernate5BeanReplicator().copy(parray);
 
             assertNotSame(parray, parray2);
             assertNotSame(parray.getPa(), parray2.getPa());
@@ -105,7 +106,7 @@ public class ByteArrayCopyTest {
         byte[] bytes = { 1, 2, 3 };
         p1.setBytes(bytes);
 
-        P p2 = new Hibernate4BeanReplicator().copy(p1);
+        P p2 = new Hibernate5BeanReplicator().copy(p1);
         assertNotSame(p1, p2);
         assertNotSame(p1.getBytes(), p2.getBytes());
         assertTrue(Arrays.equals(p1.getBytes(), p2.getBytes()));

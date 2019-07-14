@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import net.sf.beanlib.hibernate.UnEnhancer;
 import net.sf.beanlib.provider.BeanPopulator;
@@ -27,21 +27,21 @@ import net.sf.beanlib.spi.BeanPopulatorSpi;
  * fetching is enabled or not, can be controlled using the same SPI as BeanTransformer.
  *
  * @see BeanTransformer
- * @see Hibernate4BeanReplicator
+ * @see Hibernate5BeanReplicator
  * @author Joe D. Velopar
  */
-public class Hibernate4BeanTransformer extends BeanTransformer {
+public class Hibernate5BeanTransformer extends BeanTransformer {
 
-    public Hibernate4BeanTransformer() {
+    public Hibernate5BeanTransformer() {
         this(BeanPopulator.factory);
     }
 
-    public Hibernate4BeanTransformer(BeanPopulatorSpi.Factory beanPopulatorFactory) {
+    public Hibernate5BeanTransformer(BeanPopulatorSpi.Factory beanPopulatorFactory) {
         super(beanPopulatorFactory);
-        this.initCollectionReplicatableFactory(Hibernate4CollectionReplicator.getFactory());
-        this.initMapReplicatableFactory(Hibernate4MapReplicator.getFactory());
-        this.initBlobReplicatableFactory(Hibernate4BlobReplicator.getFactory());
-        this.initBeanReplicatableFactory(Hibernate4JavaBeanReplicator.getFactory());
+        this.initCollectionReplicatableFactory(Hibernate5CollectionReplicator.getFactory());
+        this.initMapReplicatableFactory(Hibernate5MapReplicator.getFactory());
+        this.initBlobReplicatableFactory(Hibernate5BlobReplicator.getFactory());
+        this.initBeanReplicatableFactory(Hibernate5JavaBeanReplicator.getFactory());
     }
 
     /**

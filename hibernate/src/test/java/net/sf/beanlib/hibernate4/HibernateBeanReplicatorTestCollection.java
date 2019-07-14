@@ -26,6 +26,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
+
 /**
  * @author Joe D. Velopar
  */
@@ -60,7 +62,7 @@ public class HibernateBeanReplicatorTestCollection {
             assertEquals("b", itr.next());
         }
 
-        A to = new Hibernate4BeanReplicator().deepCopy(from);
+        A to = new Hibernate5BeanReplicator().deepCopy(from);
         {
             Iterator<String> itr = to.getSet().iterator();
             assertEquals("a", itr.next());

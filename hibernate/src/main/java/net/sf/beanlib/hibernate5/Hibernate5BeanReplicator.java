@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import java.util.Set;
 
@@ -60,13 +60,13 @@ import net.sf.beanlib.spi.PropertyFilter;
  * @see HibernateBeanReplicator
  * @author Joe D. Velopar
  */
-public class Hibernate4BeanReplicator extends HibernateBeanReplicator {
+public class Hibernate5BeanReplicator extends HibernateBeanReplicator {
 
     /**
      * By default, all properties will be included for replication.
      */
-    public Hibernate4BeanReplicator() {
-        super(new Hibernate4BeanTransformer().initPropertyFilter(new HibernatePropertyFilter()));
+    public Hibernate5BeanReplicator() {
+        super(new Hibernate5BeanTransformer().initPropertyFilter(new HibernatePropertyFilter()));
     }
 
     /**
@@ -75,8 +75,8 @@ public class Hibernate4BeanReplicator extends HibernateBeanReplicator {
      * @param applicationPackagePrefix An application package prefix used to determine if a property with a type of an
      *            entity bean class will be included for replication.
      */
-    public Hibernate4BeanReplicator(String applicationPackagePrefix) {
-        super(new Hibernate4BeanTransformer().initPropertyFilter(new HibernatePropertyFilter(applicationPackagePrefix)));
+    public Hibernate5BeanReplicator(String applicationPackagePrefix) {
+        super(new Hibernate5BeanTransformer().initPropertyFilter(new HibernatePropertyFilter(applicationPackagePrefix)));
     }
 
     /**
@@ -95,9 +95,9 @@ public class Hibernate4BeanReplicator extends HibernateBeanReplicator {
      *            fetching if necessary. Null means all whereas empty means none.
      * @param vetoer used to veto the propagation of specific properties.
      */
-    public Hibernate4BeanReplicator(Set<Class<?>> entityBeanClassSet, Set<? extends CollectionPropertyName<?>> collectionPropertyNameSet,
+    public Hibernate5BeanReplicator(Set<Class<?>> entityBeanClassSet, Set<? extends CollectionPropertyName<?>> collectionPropertyNameSet,
             PropertyFilter vetoer) {
-        super(new Hibernate4BeanTransformer().initPropertyFilter(new HibernatePropertyFilter().withEntityBeanClassSet(entityBeanClassSet)
+        super(new Hibernate5BeanTransformer().initPropertyFilter(new HibernatePropertyFilter().withEntityBeanClassSet(entityBeanClassSet)
                 .withCollectionPropertyNameSet(collectionPropertyNameSet).withVetoer(vetoer)));
     }
 
@@ -119,9 +119,9 @@ public class Hibernate4BeanReplicator extends HibernateBeanReplicator {
      *            fetching if necessary. Null means all whereas empty means none.
      * @param vetoer used to veto the propagation of specific properties.
      */
-    public Hibernate4BeanReplicator(String applicationPackagePrefix, Set<Class<?>> entityBeanClassSet,
+    public Hibernate5BeanReplicator(String applicationPackagePrefix, Set<Class<?>> entityBeanClassSet,
             Set<? extends CollectionPropertyName<?>> collectionPropertyNameSet, PropertyFilter vetoer) {
-        super(new Hibernate4BeanTransformer().initPropertyFilter(new HibernatePropertyFilter(applicationPackagePrefix)
+        super(new Hibernate5BeanTransformer().initPropertyFilter(new HibernatePropertyFilter(applicationPackagePrefix)
                 .withEntityBeanClassSet(entityBeanClassSet).withCollectionPropertyNameSet(collectionPropertyNameSet).withVetoer(vetoer)));
     }
 }

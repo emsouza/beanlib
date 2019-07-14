@@ -26,6 +26,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
+import net.sf.beanlib.hibernate5.Hibernate5BeanTransformer;
 import net.sf.beanlib.provider.Bar;
 import net.sf.beanlib.provider.BeanPopulator;
 import net.sf.beanlib.provider.Foo;
@@ -46,7 +48,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector());
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector());
 
         Object to = replicator.deepCopy(foo);
         assertFalse(foo == to);
@@ -65,7 +67,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator();
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator();
 
         Bar to = replicator.deepCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
@@ -89,7 +91,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        HibernateBeanReplicator replicator = new Hibernate4BeanReplicator();
+        HibernateBeanReplicator replicator = new Hibernate5BeanReplicator();
 
         Object to = replicator.shallowCopy(foo);
         assertFalse(foo == to);
@@ -108,7 +110,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        Bar to = new Hibernate4BeanReplicator().shallowCopy(bar);
+        Bar to = new Hibernate5BeanReplicator().shallowCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
         assertEquals(bar.getString(), to.getString());
         assertTrue(bar == bar.getBar());
@@ -121,7 +123,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        Foo to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(foo);
+        Foo to = new Hibernate5BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(foo);
         assertEquals(foo.getString(), to.getString());
         assertEquals(foo.getProtectedSetString(), to.getProtectedSetString());
         assertNotNull(to.getProtectedSetString());
@@ -135,7 +137,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        Bar to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(bar);
+        Bar to = new Hibernate5BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).deepCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
         assertEquals(bar.getString(), to.getString());
         assertTrue(bar == bar.getBar());
@@ -151,7 +153,7 @@ public class HibernateBeanReplicatorTest {
         foo.setBoo(true);
         foo.setString("from");
 
-        Foo to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(foo);
+        Foo to = new Hibernate5BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(foo);
         assertEquals(foo.getString(), to.getString());
         assertNotNull(to.getProtectedSetString());
         assertEquals(foo.getProtectedSetString(), to.getProtectedSetString());
@@ -165,7 +167,7 @@ public class HibernateBeanReplicatorTest {
         bar.setBarString("barString");
         bar.setBar(bar);
 
-        Bar to = new Hibernate4BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(bar);
+        Bar to = new Hibernate5BeanReplicator().initSetterMethodCollector(new ProtectedSetterMethodCollector()).shallowCopy(bar);
         assertEquals(bar.getBarString(), to.getBarString());
         assertEquals(bar.getString(), to.getString());
         assertTrue(bar == bar.getBar());
@@ -186,7 +188,7 @@ public class HibernateBeanReplicatorTest {
 
         Type2 t2 = new Type2();
         new BeanPopulator(t1, t2).initDetailedPropertyFilter(DetailedPropertyFilter.ALWAYS_PROPAGATE)
-                .initTransformer(new Hibernate4BeanTransformer()).populate();
+                .initTransformer(new Hibernate5BeanTransformer()).populate();
         assertEquals(t1.getF1(), t2.getF1());
         assertEquals(t1.getF2(), t2.getF2());
         assertEquals(t1.getType().getF1(), t2.getType().getF1());
