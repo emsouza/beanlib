@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sf.beanlib</groupId>
@@ -16,6 +18,9 @@
 	</modules>
 
 	<properties>
+		<version.com.h2database>1.4.200</version.com.h2database>
+		<version.junit>4.13</version.junit>
+		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hibernate>5.3.17.Final</version.org.hibernate>
 		<version.org.slf4j>1.7.30</version.org.slf4j>
 
@@ -33,7 +38,7 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.12</version>
+				<version>${version.junit}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -43,12 +48,12 @@
 			<dependency>
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
-				<version>1.4.199</version>
+				<version>${version.com.h2database}</version>
 			</dependency>
 			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${version.org.apache.commons.lang3}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -71,19 +76,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>${project.compile.version}</source>
 					<target>${project.compile.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 				</configuration>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
+				<version>3.0.0-M1</version>
 			</plugin>
 
 		</plugins>

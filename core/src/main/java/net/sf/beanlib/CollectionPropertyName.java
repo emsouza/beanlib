@@ -18,7 +18,7 @@ package net.sf.beanlib;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 /**
  * Used to uniquely identify a Collection or Map property of a JavaBean object.
