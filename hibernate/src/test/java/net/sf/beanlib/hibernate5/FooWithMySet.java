@@ -13,14 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
-
-import java.util.HashSet;
+package net.sf.beanlib.hibernate5;
 
 /**
  * @author Joe D. Velopar
  */
-public class MySet<T> extends HashSet<T> {
+public class FooWithMySet {
 
-    private static final long serialVersionUID = 1L;
+    private MySet<Object> mySet = new MySet<Object>();
+
+    public boolean addToMySet(Object value) {
+        return this.mySet.add(value);
+    }
+
+    public MySet<Object> getMySet() {
+        return mySet;
+    }
+
+    public void setMySet(MySet<Object> mySet) {
+        this.mySet = mySet;
+    }
 }

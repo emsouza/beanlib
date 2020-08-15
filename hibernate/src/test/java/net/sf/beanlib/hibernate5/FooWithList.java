@@ -13,24 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Joe D. Velopar
  */
-public class FooWithMySet {
+public class FooWithList {
 
-    private MySet<Object> mySet = new MySet<Object>();
+    private List<Object> list;
+    FooWithList fooWithList;
 
-    public boolean addToMySet(Object value) {
-        return this.mySet.add(value);
+    public List<Object> getList() {
+        return list;
     }
 
-    public MySet<Object> getMySet() {
-        return mySet;
+    public void setList(List<Object> list) {
+        this.list = list;
     }
 
-    public void setMySet(MySet<Object> mySet) {
-        this.mySet = mySet;
+    public boolean addToList(Object obj) {
+        if (list == null) {
+            list = new ArrayList<Object>();
+        }
+        return this.list.add(obj);
+    }
+
+    public FooWithList getFooWithList() {
+        return fooWithList;
+    }
+
+    public void setFooWithList(FooWithList fooWithList) {
+        this.fooWithList = fooWithList;
     }
 }

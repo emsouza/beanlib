@@ -1,4 +1,4 @@
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
 import java.sql.Timestamp;
 import java.util.Date;

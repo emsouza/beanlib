@@ -13,36 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.HashSet;
 
 /**
  * @author Joe D. Velopar
  */
-public class FooWithMap {
+public class MySet<T> extends HashSet<T> {
 
-    private Map<Object, Object> map;
-
-    public FooWithMap(Map<Object, Object> map) {
-        if (map != null) {
-            this.map = map;
-        }
-    }
-
-    public Map<Object, Object> getMap() {
-        return map;
-    }
-
-    public void setMap(Map<Object, Object> map) {
-        this.map = map;
-    }
-
-    public Object addToMap(Object key, Object value) {
-        if (map == null) {
-            map = new TreeMap<Object, Object>();
-        }
-        return this.map.put(key, value);
-    }
+    private static final long serialVersionUID = 1L;
 }

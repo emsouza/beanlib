@@ -13,39 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.sf.beanlib.hibernate4;
+package net.sf.beanlib.hibernate5;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author Joe D. Velopar
  */
-public class FooWithList {
+public class FooWithMap {
 
-    private List<Object> list;
-    FooWithList fooWithList;
+    private Map<Object, Object> map;
 
-    public List<Object> getList() {
-        return list;
-    }
-
-    public void setList(List<Object> list) {
-        this.list = list;
-    }
-
-    public boolean addToList(Object obj) {
-        if (list == null) {
-            list = new ArrayList<Object>();
+    public FooWithMap(Map<Object, Object> map) {
+        if (map != null) {
+            this.map = map;
         }
-        return this.list.add(obj);
     }
 
-    public FooWithList getFooWithList() {
-        return fooWithList;
+    public Map<Object, Object> getMap() {
+        return map;
     }
 
-    public void setFooWithList(FooWithList fooWithList) {
-        this.fooWithList = fooWithList;
+    public void setMap(Map<Object, Object> map) {
+        this.map = map;
+    }
+
+    public Object addToMap(Object key, Object value) {
+        if (map == null) {
+            map = new TreeMap<Object, Object>();
+        }
+        return this.map.put(key, value);
     }
 }
