@@ -29,7 +29,7 @@ import net.sf.beanlib.hibernate5.HibernateDtoCopier;
  * @author Joe D. Velopar
  */
 @RunWith(JUnit4.class)
-public class Hibernate4DtoCopierTest {
+public class Hibernate5DtoCopierTest {
 
     public static class Parent {
         private Foo foo;
