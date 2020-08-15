@@ -16,8 +16,8 @@
 	</modules>
 
 	<properties>
-		<version.org.hibernate>5.3.10.Final</version.org.hibernate>
-		<version.org.slf4j>1.7.22</version.org.slf4j>
+		<version.org.hibernate>5.3.17.Final</version.org.hibernate>
+		<version.org.slf4j>1.7.30</version.org.slf4j>
 
 		<project.compile.version>1.8</project.compile.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
