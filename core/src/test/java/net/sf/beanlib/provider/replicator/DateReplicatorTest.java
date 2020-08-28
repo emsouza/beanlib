@@ -24,16 +24,14 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanPopulator;
 import net.sf.beanlib.spi.DetailedPropertyFilter;
 
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class DateReplicatorTest {
 
     private static class Dates {

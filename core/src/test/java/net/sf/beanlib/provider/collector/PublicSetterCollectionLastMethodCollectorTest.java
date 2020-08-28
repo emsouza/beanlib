@@ -18,9 +18,8 @@ package net.sf.beanlib.provider.collector;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.provider.replicator.BeanReplicator;
 import net.sf.beanlib.spi.BeanTransformerSpi;
@@ -28,14 +27,13 @@ import net.sf.beanlib.spi.BeanTransformerSpi;
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class PublicSetterCollectionLastMethodCollectorTest {
 
     /**
      * Properties are replicated in ascending order of the property names.
      */
     @Test
-    public void replicateAscending() {
+    public void testReplicateAscending() {
         A a1 = new A("a1");
         A a2 = new A();
         a1.addA(a1);
@@ -54,7 +52,7 @@ public class PublicSetterCollectionLastMethodCollectorTest {
      * Properties are replicated in descending order of the property names.
      */
     @Test
-    public void replicateDescending() {
+    public void testReplicateDescending() {
         A a1 = new A("a1");
         A a2 = new A();
         a1.addA(a1);
@@ -70,7 +68,7 @@ public class PublicSetterCollectionLastMethodCollectorTest {
     }
 
     @Test
-    public void collectionLast() {
+    public void testCollectionLast() {
         A a1 = new A("a1");
         A a2 = new A();
         a1.addA(a1);

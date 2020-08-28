@@ -20,13 +20,11 @@ import static org.junit.Assert.assertTrue;
 import java.util.Date;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.hibernate.HibernateBeanReplicator;
 import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
-@RunWith(JUnit4.class)
 public class OrderedMethodCollectorTest {
 
     @Test

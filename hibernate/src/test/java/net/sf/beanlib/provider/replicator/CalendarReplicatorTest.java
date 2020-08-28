@@ -23,17 +23,14 @@ import static org.junit.Assert.assertThat;
 import java.util.Calendar;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.hibernate5.Hibernate5BeanReplicator;
 
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class CalendarReplicatorTest {
-
     private static class CalendarBean {
         private Calendar calendar;
         private Calendar calendar2;
@@ -65,7 +62,7 @@ public class CalendarReplicatorTest {
     }
 
     @Test
-    public void beanReplicator() {
+    public void testBeanReplicator() {
         CalendarBean from = new CalendarBean();
         from.setCalendar(Calendar.getInstance());
         from.setCalendar2(from.getCalendar());
@@ -79,7 +76,7 @@ public class CalendarReplicatorTest {
     }
 
     @Test
-    public void hibernate5BeanReplicator() {
+    public void testHibernate3BeanReplicator() {
         CalendarBean from = new CalendarBean();
         from.setCalendar(Calendar.getInstance());
         CalendarBean to = new Hibernate5BeanReplicator().copy(from);

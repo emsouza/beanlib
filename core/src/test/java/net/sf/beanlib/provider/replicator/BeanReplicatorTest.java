@@ -28,13 +28,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+
+import junit.framework.JUnit4TestAdapter;
 
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class BeanReplicatorTest {
 
     public static class ComplexBean {
@@ -103,7 +102,7 @@ public class BeanReplicatorTest {
         Collection<ComplexBean> col = Arrays.asList(a);
         from.setArray(a);
         from.setCollection(col);
-        Map<String, ComplexBean> map = new HashMap<>();
+        Map<String, ComplexBean> map = new HashMap<String, ComplexBean>();
         map.put(from.getName(), from);
         from.setMap(map);
         from.setClazz(List.class);

@@ -23,15 +23,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanPopulator;
 
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class CollectionReplicatorTest {
 
     private static class A {
@@ -48,9 +46,9 @@ public class CollectionReplicatorTest {
     }
 
     @Test
-    public void linkedHashSet() {
+    public void testLinkedHashSet() {
         A from = new A();
-        Set<String> set = new LinkedHashSet<>();
+        Set<String> set = new LinkedHashSet<String>();
         set.add("a");
         set.add("c");
         set.add("b");

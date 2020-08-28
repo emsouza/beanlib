@@ -20,9 +20,8 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.BeanlibException;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.provider.BeanTransformer;
@@ -31,7 +30,6 @@ import net.sf.beanlib.provider.replicator.BeanReplicator;
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class BeanTransformerSpiTest {
 
     private static final A a = new A(new Point(1, 2));
@@ -49,7 +47,7 @@ public class BeanTransformerSpiTest {
 
     // Uses a custom transfer to deal with there case when a default no-arg constructor doesn't exist.
     @Test
-    public void noEmtyConstructor() {
+    public void testNoEmtyConstructor() {
         BeanReplicator beanReplicator = new BeanReplicator(customTransformer());
         A a2 = beanReplicator.replicateBean(a);
         assertNotSame(a, a2);

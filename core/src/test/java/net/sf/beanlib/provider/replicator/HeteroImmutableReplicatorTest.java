@@ -19,9 +19,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.provider.BeanPopulator;
 import net.sf.beanlib.provider.BeanTransformer;
 import net.sf.beanlib.spi.DetailedPropertyFilter;
@@ -29,16 +28,15 @@ import net.sf.beanlib.spi.DetailedPropertyFilter;
 /**
  * @author Joe D. Velopar
  */
-@RunWith(JUnit4.class)
 public class HeteroImmutableReplicatorTest {
 
-    public enum FromEnum {
+    public static enum FromEnum {
         F1,
         F2,
         F3,;
     }
 
-    public enum ToEnum {
+    public static enum ToEnum {
         T1,
         T2,
         T3,;
@@ -69,7 +67,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void defaultPoputlateEnum() {
+    public void testDefaultPoputlateEnum() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -93,7 +91,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void poputlateEnum() {
+    public void testPoputlateEnum() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -118,7 +116,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void populateDefaultAcrossEnums() {
+    public void testPopulateDefaultAcrossEnums() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);
@@ -132,7 +130,7 @@ public class HeteroImmutableReplicatorTest {
     }
 
     @Test
-    public void populateAcrossEnums() {
+    public void testPopulateAcrossEnums() {
         for (FromEnum e : FromEnum.values()) {
             FromBean from = new FromBean();
             from.setEnumMember(e);

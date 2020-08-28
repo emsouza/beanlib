@@ -15,6 +15,9 @@
  */
 package net.sf.beanlib;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * Information about a JavaBean property.
  *
@@ -47,5 +50,10 @@ public class PropertyInfo {
     /** Returns the Java Bean to which the property is to be written. */
     public Object getToBean() {
         return toBean;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }

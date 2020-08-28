@@ -32,9 +32,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
+import junit.framework.JUnit4TestAdapter;
 import net.sf.beanlib.BeanlibException;
 import net.sf.beanlib.PropertyInfo;
 import net.sf.beanlib.provider.BeanTransformer;
@@ -43,7 +42,6 @@ import net.sf.beanlib.provider.replicator.BeanReplicator;
 /**
  * @author Hanson Char
  */
-@RunWith(JUnit4.class)
 public class CustomBeanTransformerTest {
 
     public static class Point {
@@ -143,7 +141,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test(expected = BeanlibException.class)
-    public void replicationFailure() {
+    public void testReplicationFailure() {
         // Initialize a bean
         Bean from = new Bean();
         from.setPoint(new Point(1, 2));
@@ -154,7 +152,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void customReplicationSuccess() {
+    public void testCustomReplicationSuccess() {
         // Initialize a bean
         Bean from = new Bean();
         from.setPoint(new Point(1, 2));
@@ -174,7 +172,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void customCollectionReplication() {
+    public void testCustomCollectionReplication() {
         Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p3 = p0;
@@ -199,7 +197,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void customArrayReplication() {
+    public void testCustomArrayReplication() {
         final Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p3 = p0;
@@ -226,7 +224,7 @@ public class CustomBeanTransformerTest {
     }
 
     @Test
-    public void customMapReplication() {
+    public void testCustomMapReplication() {
         Bean from = new Bean();
         final Point p0 = new Point(3, 4);
         final Point p56 = new Point(5, 6);
